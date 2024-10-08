@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Star Wars Characters</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container mt-4">
+    <h1 class="text-center mb-4">Star Wars Characters API</h1>
+
+    <div class="row mb-4">
+      <div class="col-12 text-center">
+        <button id="loadAll" class="btn btn-primary">Cargar todos los personajes</button>
+      </div>
+    </div>
+
+    <div class="row mb-4">
+      <div class="col-md-6 mb-3">
+        <div class="card">
+          <div class="card-body">
+            <h2 class="card-title">Buscar por ObjectId</h2>
+            <div class="input-group">
+              <input type="text" id="searchById" class="form-control" placeholder="Introduce el ObjectId">
+              <button id="btnSearchById" class="btn btn-outline-secondary">Buscar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <div class="card">
+          <div class="card-body">
+            <h2 class="card-title">Buscar por nombre</h2>
+            <div class="input-group">
+              <input type="text" id="searchByName" class="form-control" placeholder="Introduce el nombre o parte del nombre">
+              <button id="btnSearchByName" class="btn btn-outline-secondary">Buscar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="results" class="row"></div>
+  </div>
+
+  <!-- Bootstrap JS and Popper.js -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="scripts.js"></script>
+</body>
+</html>
