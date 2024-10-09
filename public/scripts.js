@@ -34,13 +34,20 @@ function createCharacterHTML(character) {
   return `
     <div class="col-md-4 mb-4">
       <div class="card character-card">
-        <div class="card-body">
+        <div class="card-header">
           <h3 class="card-title">${character.name || 'Nombre desconocido'}</h3>
-          <p class="card-text"><strong>ObjectId:</strong> ${character._id || 'N/A'}</p>
-          <p class="card-text"><strong>Height:</strong> ${character.height || 'N/A'}</p>
-          <p class="card-text"><strong>Mass:</strong> ${character.mass || 'N/A'}</p>
-          <p class="card-text"><strong>Gender:</strong> ${character.gender || 'N/A'}</p>
-          <p class="card-text"><strong>Birth Year:</strong> ${character.birth_year || 'N/A'}</p>
+        </div>
+        <div class="card-body">
+          <div class="character-info">
+            <p><i class="fas fa-fingerprint"></i> <strong>ID:</strong> ${character._id || 'N/A'}</p>
+            <p><i class="fas fa-ruler-vertical"></i> <strong>Altura:</strong> ${character.height || 'N/A'} cm</p>
+            <p><i class="fas fa-weight"></i> <strong>Peso:</strong> ${character.mass || 'N/A'} kg</p>
+            <p><i class="fas fa-venus-mars"></i> <strong>Género:</strong> ${character.gender || 'N/A'}</p>
+            <p><i class="fas fa-birthday-cake"></i> <strong>Año de nacimiento:</strong> ${character.birth_year || 'N/A'}</p>
+          </div>
+        </div>
+        <div class="card-footer">
+          <small>Especie: ${character.species || 'Desconocida'}</small>
         </div>
       </div>
     </div>`;

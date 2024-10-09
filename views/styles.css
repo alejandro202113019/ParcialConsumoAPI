@@ -1,20 +1,103 @@
 body {
-    background-color: #f8f9fa;
-  }
-  
-  .card {
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  }
-  
-  .character-card {
-    transition: transform 0.2s;
-  }
-  
-  .character-card:hover {
-    transform: translateY(-5px);
-  }
-  
-  .error {
-    color: #dc3545;
-    font-weight: bold;
-  }
+  font-family: 'Roboto', sans-serif;
+  background-color: #0c0d0f;
+  color: #ffffff;
+}
+
+.container {
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+h1 {
+  color: #ffd700;
+  text-align: center;
+  margin-bottom: 30px;
+  font-family: 'Star Jedi', sans-serif;
+  font-size: 3em;
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.7);
+}
+
+.character-card {
+  background: linear-gradient(145deg, #1a1b1f 0%, #2c2d32 100%);
+  border: 1px solid #ffd700;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+}
+
+.character-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 20px rgba(255, 215, 0, 0.5);
+}
+
+.card-header {
+  background-color: #ffd700;
+  color: #000000;
+  padding: 10px;
+  font-weight: bold;
+}
+
+.card-title {
+  margin: 0;
+  font-size: 1.2em;
+  text-align: center;
+}
+
+.card-body {
+  padding: 15px;
+}
+
+.character-info p {
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+}
+
+.character-info i {
+  margin-right: 10px;
+  color: #ffd700;
+}
+
+.card-footer {
+  background-color: rgba(255, 215, 0, 0.1);
+  border-top: 1px solid #ffd700;
+  padding: 10px;
+  text-align: center;
+  font-style: italic;
+}
+
+.btn-primary {
+  background-color: #ffd700;
+  border-color: #ffd700;
+  color: #000000;
+  font-weight: bold;
+}
+
+.btn-primary:hover {
+  background-color: #ffee00;
+  border-color: #ffee00;
+  color: #000000;
+}
+
+input[type="text"] {
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid #ffd700;
+  color: #ffffff;
+}
+
+input[type="text"]::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.card {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.error {
+  color: #dc3545;
+  font-weight: bold;
+}
