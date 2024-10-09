@@ -7,17 +7,25 @@ function displayResults(response) {
   
   console.log('Response received:', response);
 
-  // Check if the response has a data property
+  if (response.error) {
+    resultsDiv.innerHTML = `<div class="alert alert-danger">${response.error}</div>`;
+    return;
+  }
+
   const characterData = response.data ? response.data : response;
   
   if (Array.isArray(characterData)) {
-    characterData.forEach(character => {
-      resultsDiv.innerHTML += createCharacterHTML(character);
-    });
+    if (characterData.length === 0) {
+      resultsDiv.innerHTML = '<div class="alert alert-info">No se encontraron personajes</div>';
+    } else {
+      characterData.forEach(character => {
+        resultsDiv.innerHTML += createCharacterHTML(character);
+      });
+    }
   } else if (typeof characterData === 'object' && characterData !== null) {
     resultsDiv.innerHTML += createCharacterHTML(characterData);
   } else {
-    resultsDiv.innerHTML = '<p>No se encontraron datos</p>';
+    resultsDiv.innerHTML = '<div class="alert alert-warning">No se encontraron datos</div>';
   }
 }
 
@@ -39,9 +47,9 @@ function createCharacterHTML(character) {
 }
 
 function handleError(error) {
-  console.error('Error:', error); // Log the error
+  console.error('Error:', error);
   const resultsDiv = document.getElementById('results');
-  resultsDiv.innerHTML = `<div class="col-12"><p class="error">Error: ${error.message}</p></div>`;
+  resultsDiv.innerHTML = `<div class="alert alert-danger">Error: ${error.message}</div>`;
 }
 
 document.getElementById('loadAll').addEventListener('click', () => {
@@ -50,14 +58,13 @@ document.getElementById('loadAll').addEventListener('click', () => {
     .then(data => displayResults(data))
     .catch(error => handleError(error));
 });
-
 document.getElementById('btnSearchById').addEventListener('click', () => {
   const objectId = document.getElementById('searchById').value.trim();
   if (objectId) {
     fetch(`${baseURL}/${objectId}`)
       .then(response => {
         if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
+          return response.json().then(err => { throw err; });
         }
         return response.json();
       })
@@ -65,7 +72,14 @@ document.getElementById('btnSearchById').addEventListener('click', () => {
         console.log('Received data:', data);
         displayResults(data);
       })
-      .catch(error => handleError(error));
+      .catch(error => {
+        console.error('Error details:', error);
+        if (error.error) {
+          handleError({ message: error.error });
+        } else {
+          handleError(error);
+        }
+      });
   } else {
     alert("Por favor, introduce un ObjectId válido");
   }
